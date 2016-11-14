@@ -4,7 +4,8 @@
 //
 //  Created by 思 彭 on 16/11/14.
 //  Copyright © 2016年 思 彭. All rights reserved.
-//
+
+// "课表"界面
 
 #import "ViewController.h"
 #import "CourseCell.h"
@@ -23,6 +24,8 @@
 
 @implementation ViewController
 
+#pragma mark - Life Cycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"学期课表";
@@ -31,15 +34,21 @@
     [self setUI];
 }
 
+#pragma mark - InitData
+
 -(void)initData {
     
     self.weekArray = @[@"07级\n1班",@"星期一",@"星期二",@"星期三",@"星期四",@"星期五",@"星期六",@"星期日"];
 }
 
+#pragma mark - 设置界面
+
 - (void)setUI {
     
     [self.view addSubview:self.collectionView];
 }
+
+#pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     
@@ -58,15 +67,24 @@
     return cell;
 }
 
+#pragma mark - UICollectionViewDelegateFlowLayout
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     return CGSizeMake(k_screenW, 8 * 50);
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    
+    return CGSizeMake(k_screenW, 40);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     
     return UIEdgeInsetsMake(0, 0, 0, 0);
 }
+
+#pragma mark - UICollectionViewDelegate
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     
@@ -79,10 +97,7 @@
     return nil;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    
-    return CGSizeMake(k_screenW, 40);
-}
+#pragma mark - 懒加载
 
 - (NSMutableArray *)dataArray {
     

@@ -4,7 +4,8 @@
 //
 //  Created by 思 彭 on 16/11/14.
 //  Copyright © 2016年 思 彭. All rights reserved.
-//
+
+// "课表"头视图
 
 #import "CollectionHeaderReusableView.h"
 #import "UIView+customView.h"
@@ -22,11 +23,15 @@
     return self;
 }
 
+#pragma mark - 创建子视图
+
 - (void)createSubViews {
    
     self.labelView = [UIView viewWithLabelNumber:8 withHeight:44];
     [self addSubview:self.labelView];
 }
+
+#pragma mark - 设置值
 
 - (void)setWeekArray:(NSArray *)weekArray {
     

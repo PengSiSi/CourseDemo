@@ -24,10 +24,14 @@
     return self;
 }
 
+#pragma mark - 创建子视图
+
 - (void)setSubViews {
     
     [self.contentView addSubview:self.innerCollectionView];
 }
+
+#pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     
@@ -50,6 +54,8 @@
     return cell;
 }
 
+#pragma mark - UICollectionViewDelegateFlowLayout
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     return CGSizeMake(k_screenW / 8, 50);
@@ -59,6 +65,8 @@
     
     return UIEdgeInsetsMake(0, 0, 0, 0);
 }
+
+#pragma mark - 懒加载
 
 - (UICollectionView *)innerCollectionView {
     
